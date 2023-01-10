@@ -2,14 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import Prism from "prismjs";
-require("prismjs/components/prism-javascript");
+require("prismjs/components/prism-jsx");
 require("prismjs/components/prism-css");
 require("prismjs/components/prism-markup");
 //import hljs from "highlight.js/lib/common";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import Preview from "./preview";
+//import { Component } from "react/cjs/react.production.min";
 //import "highlight.js/styles/base16/monokai.css";
 
-export default function Code({ source }) {
+export default function Code({ code, language }) {
   useEffect(() => {
     //hljs.initHighlightingOnLoad();
     Prism.highlightAll();
@@ -21,8 +23,8 @@ export default function Code({ source }) {
         <div>
           <h2 className="font-bold">Code</h2>
           <pre className="rounded-lg overflow-hidden relative">
-            <code className="language-html h-96">{source}</code>
-            <CopyToClipboard text={source} result={console.log("copied")}>
+            <code className={`language-${language}`}>{code}</code>
+            <CopyToClipboard text={code}>
               <button
                 className="absolute top-2 right-2 bg-white/20 text-white hover:bg-white/30 rounded-lg z-10 font-sans px-2 py-2 inline-flex items-center space-x-2 font-medium shadow-md"
                 onClick={() => setButtonText("Copied")}>
@@ -45,14 +47,9 @@ export default function Code({ source }) {
             </CopyToClipboard>
           </pre>
         </div>
+
         <div>
-          <h2 className="font-bold">Preview</h2>
-          <iframe
-            className="w-full h-96 border border-slate-200 rounded-lg overflow-hidden"
-            srcDoc={
-              `<script src="https://cdn.tailwindcss.com"></script>` + source
-            }
-            frameborder="0"></iframe>
+          <Preview lang={language} code={code} />
         </div>
       </div>
     </>

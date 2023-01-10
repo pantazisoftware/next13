@@ -13,7 +13,7 @@ export default async function Page({ params: { id } }) {
     <div className="max-w-5xl mx-auto">
       <h1 className="text-2xl font-bold">{component.name}</h1>
 
-      <Code source={component.code} />
+      <Code code={component.code} language={component.language} />
     </div>
   );
 }

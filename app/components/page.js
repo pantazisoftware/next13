@@ -20,7 +20,7 @@ export default async function Page() {
         {components["items"].map((component) => {
           return (
             <div
-              id={component.id}
+              key={component.id}
               className="border border-slate-200 rounded-lg p-4">
               <a href={`/components/${component.id}`} className="font-medium">
                 {component.name}
