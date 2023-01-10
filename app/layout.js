@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./prism.css";
 
 export default function RootLayout({ children }) {
   return (

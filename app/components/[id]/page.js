@@ -1,4 +1,3 @@
-import "highlight.js/styles/default.css";
 import Code from "../../ui/code";
 
 async function getComponent(id) {
@@ -12,7 +11,8 @@ export default async function Page({ params: { id } }) {
 
   return (
     <div className="max-w-5xl mx-auto">
-      <h1 className="text-xl font-bold">{component.name}</h1>
+      <h1 className="text-2xl font-bold">{component.name}</h1>
+
       <Code source={component.code} />
     </div>
   );

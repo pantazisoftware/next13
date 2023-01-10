@@ -1,13 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import hljs from "highlight.js/lib/common";
+import Prism from "prismjs";
+require("prismjs/components/prism-javascript");
+require("prismjs/components/prism-css");
+require("prismjs/components/prism-markup");
+//import hljs from "highlight.js/lib/common";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import "highlight.js/styles/base16/monokai.css";
+//import "highlight.js/styles/base16/monokai.css";
 
 export default function Code({ source }) {
   useEffect(() => {
-    hljs.initHighlightingOnLoad();
+    //hljs.initHighlightingOnLoad();
+    Prism.highlightAll();
   }, []);
   const [buttonText, setButtonText] = useState("Copy");
   return (
@@ -16,7 +21,7 @@ export default function Code({ source }) {
         <div>
           <h2 className="font-bold">Code</h2>
           <pre className="rounded-lg overflow-hidden relative">
-            <code className="html h-96">{source}</code>
+            <code className="language-html h-96">{source}</code>
             <CopyToClipboard text={source} result={console.log("copied")}>
               <button
                 className="absolute top-2 right-2 bg-white/20 text-white hover:bg-white/30 rounded-lg z-10 font-sans px-2 py-2 inline-flex items-center space-x-2 font-medium shadow-md"
