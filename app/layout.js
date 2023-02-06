@@ -1,21 +1,18 @@
 import "./styles.css";
 import "./prism.css";
+import NavBar from "./ui/Navbar";
+import { Inter } from "@next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="font-inter">
       <head />
-      <body>
-        <header className="border-b border-slate-300 py-3 px-4">
-          <h2 className="font-bold text-xl">Nice Website</h2>
-          <div className="inline-flex space-x-2 items-center">
-            <a href="/" className="hover:text-blue-500 font-medium">
-              Homepage
-            </a>
-            <a href="/components" className="hover:text-blue-500 font-medium">
-              Components
-            </a>
-          </div>
+      <body className="antialiased font-inter">
+        <header>
+          <NavBar />
         </header>
         <main className="p-4">{children}</main>
       </body>
